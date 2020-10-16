@@ -14,5 +14,8 @@ export class HomeComponent implements OnInit {
 	}
 	playMovie(){
 		this.router.navigate(['videoPlayer'])
-	}
+  }
+  toSignInPage(){
+    this.router.navigate(['sign_in'])
+  }
 }
