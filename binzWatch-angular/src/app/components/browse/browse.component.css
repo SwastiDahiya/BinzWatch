@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    /* background-color: #1d1d1d; */
+    background-color: #141414;
+}
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.slick-next {
+    right: 20px;
+    z-index: 99;
+}
+.slick-next:before {
+    font-size: 40px;
+}
+.slick-prev {
+    left: 20px;
+    z-index: 99;
+}
+.slick-prev:before {
+    font-size: 40px;
+}
+
+.containerBoxBox {
+    display: flex;
+    flex-direction: column;
+   /*BANNER ENDS*/
+}
+.containerBoxBox .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 6rem;
+}
+.containerBox .header__banner {
+    background-position: top center;
+    background-size: cover;
+    width: 100%;
+    position: absolute;
+    height: 90vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.containerBox .header__banner h2 {
+    font-size: 6rem;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    color: lightgray;
+}
+.containerBox .header__banner .header__buttons {
+    display: flex;
+}
+.containerBox .header__banner .header__buttons button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 20px;
+    padding: 15px 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.containerBox .header__banner .header__buttons button mat-icon {
+    transform: scale(1.25);
+}
+.containerBox .header__banner .header__buttons button.play-button span {
+    font-weight: 600;
+    font-size: 24px;
+}
+.containerBox .header__banner .header__buttons button.play-button mat-icon {
+    transform: scale(2.5);
+}
+.containerBox .header__banner .header__buttons button.more-button {
+    background-color: rgba(112, 113, 109, 0.7);
+}
+.containerBox .header__banner .header__buttons button.more-button mat-icon {
+    color: lightgray;
+}
+.containerBox .header__banner .header__buttons button.more-button span {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+}
+.containerBox .header__main {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    transition: all 0.3s;
+    transition-timing-function: ease-in;
+}
+.containerBox .header__main.sticky {
+    background-color: #0d0d0d;
+    z-index: 100;
+}
+.containerBox .header__left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.containerBox .header__left img {
+    margin-left: 40px;
+    height: 100%;
+    width: 100px;
+    margin-top: 5px;
+}
+.containerBox .header__left li.active a {
+    color: white;
+}
+.containerBox .header__right ul {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.containerBox .header__right ul li a {
+    color: white;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.containerBox .header__right ul li a > mat-icon {
+    margin-top: 5px;
+    font-weight: 600;
+}
+.containerBox .body {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+    position: relative;
+}
+.containerBox .body::-webkit-scrollbar {
+    display: none;
+}
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+ul a {
+    display: inline-block;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+    color: #a4a4a4;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.2s ease;
+}
+ul a:hover {
+    color: #696969;
+}
