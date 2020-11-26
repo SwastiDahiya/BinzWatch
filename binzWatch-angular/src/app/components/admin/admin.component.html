@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row" style="margin: 20px; margin-left: 0">
+    <h3>Upload movies</h3>
+  </div>
+  <form (ngSubmit)="addMovie(m)" #m="ngForm">
+    <div class="form-group">
+      <label for="movieTitle">Movie Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="movieTitle"
+        name="movieTitle"
+        ngModel
+        placeholder="Enter title of the movie"
+      />
+    </div>
+    <div class="form-group">
+      <label for="movieType">Movie Type</label>
+      <select class="form-control" id="movieType" name="movieType" ngModel>
+        <option>Trending</option>
+        <option>Top_Rated</option>
+        <option>Originals</option>
+        <option>TV_Drama</option>
+        <option>Indian movies</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="moviePosterLink">Movie Poster Link</label>
+      <input
+        type="text"
+        class="form-control"
+        id="moviePosterLink"
+        name="moviePosterLink"
+        ngModel
+        placeholder="Enter Movie Poster Link"
+      />
+    </div>
+    <div class="form-group">
+      <label for="movieTitle">Movie Media URL</label>
+      <input
+        type="text"
+        class="form-control"
+        id="movieMediaUrl"
+        name="movieMediaUrl"
+        ngModel
+        placeholder="Enter movie media URL"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add movie</button>
+  </form>
+</div>

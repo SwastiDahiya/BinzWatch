@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, OnChanges, NgZone } from '@angular/core';
 import { fromEvent, timer } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
@@ -12,6 +12,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class VideoplayerComponent implements OnInit {
 	selectedMovie;
+	hideLoader=false;
 	// --------- video assets -------------
 	movieTitle: string = '';
 	videoSource: string = '';
@@ -20,10 +21,11 @@ export class VideoplayerComponent implements OnInit {
 	subtitleLanguage: string = 'off';
 	//    ---------------------------------------------
 	hideVolume: boolean = true;
-	loaderDisplay = true;
+	x=true;
 	currentTime;
 	totalDuration;
 	hideTop = true;
+	displayLoader = true;
 	hideLower = true;
 	progressPos;
 	screenStatus: string = 'fullscreen';
@@ -47,7 +49,7 @@ export class VideoplayerComponent implements OnInit {
 	// onMouseMove($event) {
 	// 	if (this.MouseOverManipulate == false) {
 	// 		this.hideTop = false;
-	// 		console.log('clicked');
+
 	// 		setTimeout(() => {
 	// 			this.hideTop = true;
 	// 			this.hideVolume = true;
@@ -60,20 +62,24 @@ export class VideoplayerComponent implements OnInit {
 	// ngOnInit() {
 	// 	this.initialisePlayer();
 	// }
-	constructor(private router:Router,private movieService:MovieService) {}
+	constructor(private router:Router,private movieService:MovieService,private zone:NgZone) {
+		
+	}
 	ngOnInit(): void {
+		document.getElementById("overlay").style.display = "none";
 		this.initialisePlayer();
+		// this.disableLoader();
 		if (this.MouseOverManipulate == false) {
 			fromEvent<MouseEvent>(document, 'mousemove')
 				.pipe(
 					tap(() => {
-						console.log('show it!');
+					
 						this.hideTop = false;
 					}),
 					switchMap((event) =>
 						timer(5000).pipe(
 							tap(() => {
-								console.log('hideit');
+						
 								this.hideTop = true;
 								this.hideVolume = true;
 								this.openSubtitles = false;
@@ -97,13 +103,23 @@ export class VideoplayerComponent implements OnInit {
 		this.movieTitle = this.movieService.getSelectedMovie().title;
 		this.MouseOverManipulate = true;
 		var myVideo: any = document.getElementById('myVideo');
+		myVideo.onplaying = function() {
+			document.getElementById("loader").style.display = "none";
+			document.getElementById("overlay").style.display = "block";
+		};
+		myVideo.onwaiting = function() {
+			document.getElementById("loader").style.display = "block";
+			document.getElementById("overlay").style.display = "none";
+		  };
+		this.hideLoader=true;
 		if (myVideo.paused == true) {
-			this.loaderDisplay = false;
+			this.hideLoader = false;
+
 			this.updateDuration();
 			this.seekbar();
 			this.updateVolume();
 			this.hideTop = false;
-			this.hideLower = false;
+			// this.hideLower = false;
 			this.MouseOverManipulate = false;
 		}
 	}
@@ -117,7 +133,7 @@ export class VideoplayerComponent implements OnInit {
 
 	public changeQuality(quality) {
 		//for changing the quality of the video
-		console.log('quality changed to : ' + quality);
+
 		this.quality = quality;
 	}
 
@@ -165,9 +181,7 @@ export class VideoplayerComponent implements OnInit {
 			this.videoStatus = 'pause';
 		}
 	}
-	printName(){
-		console.log('bharat')
-	}
+	
 	public toggleFullScreen() {
 		//toggling fullscreen
 		const elem = this.divRef.nativeElement;
@@ -242,7 +256,7 @@ export class VideoplayerComponent implements OnInit {
 		var myVideo: any = document.getElementById('myVideo');
 
 		progressBar.addEventListener('click', function(e) {
-			console.log('hello from progressbar');
+
 			var percent = e.offsetX / this.offsetWidth;
 			myVideo.currentTime = percent * myVideo.duration;
 			var progressPos = myVideo.currentTime / myVideo.duration;
@@ -251,7 +265,7 @@ export class VideoplayerComponent implements OnInit {
 	}
 
 	toggleSubtitlesDisplay(subtitle: string) {
-		console.log('subtitle ->' + subtitle);
+	
 		this.subtitleLanguage = subtitle;
 		this.openSubtitles = false;
 	}
@@ -261,7 +275,7 @@ export class VideoplayerComponent implements OnInit {
 		var myVideo: any = document.getElementById('myVideo');
 		slider.value = myVideo.volume;
 		var y: any = slider.value;
-		console.log(y);
+	
 		y = y * 100;
 		var color = 'linear-gradient(90deg, white ' + y + '%, rgba(0, 0, 0, 0.1) ' + y + '%)';
 		slider.style.background = color;

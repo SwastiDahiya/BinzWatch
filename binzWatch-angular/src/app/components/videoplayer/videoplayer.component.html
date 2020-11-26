@@ -1,4 +1,8 @@
 <!-- <body> -->
+<!-- <div class="loader-div" id="loader">
+  <div class="loader"></div>
+</div> -->
+
 <div class="video-container" #videoFullscreen>
   <div class="video-wrapper" mouse-move>
     <video
@@ -23,17 +27,31 @@
       Your browser does not support HTML5 video.
     </video>
     <!-- <video data-dashjs-player autoplay src="http://14.102.189.42:80/manifest.mpd" class="video" id="myVideo"#videoPlayer></video> -->
-    <div class="loader-wrapper">
-      <div class="loader" *ngIf="loaderDisplay"></div>
-    </div>
 
     <!-- overlay -->
-    <div class="overlay" [class.hideOverlay]="hideTop">
+    <div class="loader-div">
+      <div class="lds-roller" id="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="overlay" [class.hideOverlay]="hideTop" id="overlay">
       <!-- top controls  -->
       <div class="top">
         <span class="back-button">
           <button class="buttons" (click)="toBrowsePage()">
-            <img src="../../assets/icons/back.png" width="26px" height="26px" />
+            <img
+              src="../../assets/icons/back.png"
+              class="back-button-icon"
+              width="26px"
+              height="26px"
+            />
           </button>
         </span>
         <span class="title-movie">

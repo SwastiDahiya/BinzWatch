@@ -1,0 +1,80 @@
+<!-- <p>sign-in works!</p> -->
+
+<body>
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div class="wrapper fadeInDown" *ngIf="!isLoading">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../assets/images/logo.png" id="icon" alt="User Icon" />
+      </div>
+      <p style="color: #e87c03" *ngIf="emailExists">Email already Exists !</p>
+      <!-- Login Form -->
+      <form (ngSubmit)="signUp(r)" #r="ngForm">
+        <input
+          type="text"
+          id="fullName"
+          class="fadeIn second"
+          name="fullName"
+          ngModel
+          #nameInput="ngModel"
+          placeholder="Full name"
+          required
+          maxlength="64"
+        />
+        <p *ngIf="!nameInput.valid && nameInput.touched" style="color: #e87c03">
+          Please enter a valid full name
+        </p>
+        <input
+          type="text"
+          id="email"
+          class="fadeIn second"
+          name="email"
+          ngModel
+          #emailInput="ngModel"
+          placeholder="Email "
+          required
+          maxlength="64"
+          pattern="[a-zA-Z0-9_.+-]{1,20}@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail|piet|yahoo|hotmail|rediffmail|apple|microsoft)\.([a-z]{2,4})(\.[a-z]{2,4})?$"
+        />
+        <p
+          *ngIf="!emailInput.valid && emailInput.touched"
+          style="color: #e87c03"
+        >
+          Please enter a valid email
+        </p>
+        <input
+          type="password"
+          id="password"
+          class="fadeIn third"
+          name="password"
+          ngModel
+          minlength="8"
+          maxlength="20"
+          #passwordInput="ngModel"
+          placeholder="Password"
+          required
+        />
+        <p
+          *ngIf="!passwordInput.valid && passwordInput.touched"
+          style="color: #e87c03"
+        >
+          Please enter a valid password
+        </p>
+        <input type="submit" class="fadeIn fourth" value="Sign up" />
+      </form>
+
+      <div id="formFooter" style="color: #737373">
+        Already registered ?
+        <a
+          class="underlineHover"
+          style="color: white; cursor: pointer"
+          (click)="toSignIn()"
+          >Sign in</a
+        >
+      </div>
+    </div>
+  </div>
+</body>

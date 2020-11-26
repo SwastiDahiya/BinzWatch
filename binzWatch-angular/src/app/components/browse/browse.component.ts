@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { HttpService } from 'src/app/services/http.service';
 import {Movies} from '../../models/movies';
 import {MovieService} from '../../services/movie.service';
 
@@ -28,7 +30,11 @@ export class BrowseComponent implements OnInit {
   @ViewChild('stickHeader',{static:false}) header: ElementRef;
   headerBGUrl: string;
 
-  constructor(private movie: MovieService) {
+  constructor(
+    private movie: MovieService,
+    private httpService:HttpService,
+    private authService:AuthService
+    ) {
   }
 
   trendingArray:Movies ={
@@ -228,6 +234,7 @@ export class BrowseComponent implements OnInit {
     ]
     }
   ngOnInit(): void {
+  
     this.subs.push(this.movie.getTrending().subscribe(data => {
       this.trending = data;
       this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;
@@ -254,6 +261,10 @@ export class BrowseComponent implements OnInit {
     } else {
       this.sticky = false;
     }
+  }
+
+  signOut(){
+    this.authService.signOut();
   }
 
 }

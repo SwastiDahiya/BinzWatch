@@ -27,3 +27,9 @@ export interface Dates {
   maximum: string;
   minimum: string;
 }
+export class movieModel {
+  movieTitle:string;
+  moviePosterLink:string;
+  movieMediaUrl:string;
+  movieType:string;
+}

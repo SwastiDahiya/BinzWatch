@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
 	selector: 'app-home',
@@ -7,8 +8,12 @@ import { Router } from '@angular/router';
 	styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-	ngOnInit() {}
-	constructor(public router: Router) {}
+	ngOnInit() {
+		this.httpService.fetchMovies().subscribe((res)=>{
+			console.log(res);
+		  })
+	}
+	constructor(public router: Router,private httpService:HttpService) {}
 	toVideoPlayer() {
 		this.router.navigate([ 'videoPlayer' ]);
 	}
