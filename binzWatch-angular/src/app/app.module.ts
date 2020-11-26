@@ -24,6 +24,7 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AuthGuard } from './components/auth/auth.guard';
+import { UserProfileComponent } from './components/browse/user-profile/user-profile.component';
 export const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "videoPlayer", component: VideoplayerComponent,canActivate:[AuthGuard] },
@@ -32,6 +33,7 @@ export const appRoutes: Routes = [
   { path: "movie-card", component: MovieCardComponent },
   { path: "browse", component:BrowseComponent,canActivate:[AuthGuard]},
   { path: "admin",component:AdminComponent},
+  { path: "userprofile",component:UserProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/browse', pathMatch: 'full', canActivate:[AuthGuard] }
 ];
@@ -40,7 +42,7 @@ export const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, VideoplayerComponent, HomeComponent, MovieCardComponent, ImageComponent, SignInComponent,SliderComponent, BrowseComponent, AdminComponent, SignUpComponent, LoaderComponent],
+  declarations: [AppComponent, VideoplayerComponent, HomeComponent, MovieCardComponent, ImageComponent, SignInComponent,SliderComponent, BrowseComponent, AdminComponent, SignUpComponent, LoaderComponent, UserProfileComponent],
   imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes), 
     AppRoutingModule,
     BrowserAnimationsModule,
