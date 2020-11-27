@@ -19,3 +19,43 @@ img {
     transform: scale(1.02);
     cursor: pointer;
 }
+.mobileView{
+    display: none;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+.desktopView{
+    display: none;
+}
+.mobileView{
+    display: block;
+}
+.movie-tile-image{
+    width: 40vw !important;
+    height: 35vh !important;
+}
+h2{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0 0 .5em 0;
+    color: #999;
+}
+}
+
+@media only screen and (min-device-width: 500px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
+    .desktopView{
+        display: none;
+    }
+    .mobileView{
+        display: block;
+    }
+    .movie-tile-image{
+        width: 40vw !important;
+        height: 35vh !important;
+    }
+    h2{
+        font-size: 1.2em;
+        font-weight: 700;
+        margin: 0 0 .5em 0;
+        color: #999;
+    }
+    }

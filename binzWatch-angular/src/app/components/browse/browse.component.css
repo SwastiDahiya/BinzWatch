@@ -175,3 +175,154 @@ ul a {
 ul a:hover {
     color: #696969;
 }
+.hamburger{
+    display: none;
+}
+/* potrait mode  */
+@media only screen and (min-device-width: 320px) and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+.containerBox .header__banner{
+    height: 33vh;
+    margin-top: 60px;
+}
+.containerBox .header__main{
+    padding:10px
+}
+.containerBox .header__left{
+    display:none;
+}
+.containerBox .header__right{
+    display: none;
+}
+.containerBox .header__main{
+    background-color: black;
+}
+.containerBox .header__main.sticky {
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+}
+.logo{
+    height: 40px !important;
+}
+
+.hamburger{
+    display: block;
+    font-size: 33px;
+    margin-top: 4px;
+}
+
+.containerBox .header__banner .header__buttons {
+    display: flex;
+}
+.containerBox .header__banner .header__buttons button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 20px;
+    padding: 4px 12px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+.containerBox .header__banner .header__buttons button mat-icon {
+    transform: scale(1.25);
+}
+.containerBox .header__banner .header__buttons button.play-button span {
+    font-weight: 600;
+    font-size: 20px;
+}
+.containerBox .header__banner .header__buttons button.play-button mat-icon {
+    transform: scale(2.0);
+}
+.containerBox .header__banner .header__buttons button.more-button {
+    display: none;
+}
+
+.containerBox .header__banner h2 {
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 5rem;
+    color: lightgray;
+}
+.movie-container{
+    margin-top: 38vh !important;
+    padding-top: 35px !important;
+    font-size: 1.2rem!important;
+}
+}
+/* landscape mode  */
+@media only screen and (min-device-width: 500px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
+    .containerBox .header__banner{
+        height: 60vh;
+        margin-top: 60px;
+    }
+    .containerBox .header__main{
+        padding:10px
+    }
+    .containerBox .header__left{
+        display:none;
+    }
+    .containerBox .header__right{
+        display: none;
+    }
+    .containerBox .header__main{
+        background-color: black;
+    }
+    .containerBox .header__main.sticky {
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+    }
+    .logo{
+        height: 40px !important;
+    }
+    
+    .hamburger{
+        display: block;
+        font-size: 33px;
+        margin-top: 4px;
+    }
+    
+    .containerBox .header__banner .header__buttons {
+        display: flex;
+    }
+    .containerBox .header__banner .header__buttons button {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 20px;
+        padding: 4px 12px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        margin-left: 2rem;
+        cursor: pointer;
+    }
+    .containerBox .header__banner .header__buttons button mat-icon {
+        transform: scale(1.25);
+    }
+    .containerBox .header__banner .header__buttons button.play-button span {
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .containerBox .header__banner .header__buttons button.play-button mat-icon {
+        transform: scale(2.0);
+    }
+    .containerBox .header__banner .header__buttons button.more-button {
+        display: none;
+    }
+    
+    .containerBox .header__banner h2 {
+        font-size: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 0.5rem;
+        margin-top: 5rem;
+        color: lightgray;
+    }
+    .movie-container{
+        margin-top: 70vh !important;
+        padding-top: 35px !important;
+        font-size: 1.2rem!important;
+    }
+}

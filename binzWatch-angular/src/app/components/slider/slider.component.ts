@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MovieService } from 'src/app/services/movie.service';
 import {Movies} from '../../models/movies';
 
@@ -24,4 +25,38 @@ export class SliderComponent implements OnInit {
     this.movieService.setSelectedMovie(movie);
     this.router.navigate(['videoPlayer']);
   }
+  mobileSliderConfig = {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: false,
+  };
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    center: true,
+    dots: true,
+    autoHeight: true,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      300: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      800: {
+        items: 3,
+      },
+      1000: {
+        items: 3,
+      },
+      1300: {
+        items: 4,
+      },
+    },
+  };
 }

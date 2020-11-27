@@ -24,6 +24,7 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AuthGuard } from './components/auth/auth.guard';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 export const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "videoPlayer", component: VideoplayerComponent,canActivate:[AuthGuard] },
@@ -49,7 +50,8 @@ export const appRoutes: Routes = [
     MatProgressSpinnerModule,
     SlickCarouselModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
   ],
   providers: [
     {

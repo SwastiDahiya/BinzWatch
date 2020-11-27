@@ -24,7 +24,7 @@ export class BrowseComponent implements OnInit {
     slidesToShow: 7,
     slidesToScroll: 2,
     arrows: true,
-    autoplay: false
+    autoplay: false,
   };
 
   @ViewChild('stickHeader',{static:false}) header: ElementRef;
@@ -237,6 +237,7 @@ export class BrowseComponent implements OnInit {
   
     this.subs.push(this.movie.getTrending().subscribe(data => {
       this.trending = data;
+      console.log(this.trending.results[0])
       this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;
     }));
     

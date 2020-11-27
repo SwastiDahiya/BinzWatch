@@ -1,43 +1,90 @@
-<h2>{{ title }}</h2>
+<div class="desktopView">
+  <h2>{{ title }}</h2>
 
-<div class="movie" *ngIf="movies.type == 'trending'">
-  <div class="movie__images">
-    <div class="thumbnails">
-      <ngx-slick-carousel [config]="sliderConfig" class="carousel">
-        <div
-          class="slick-item"
-          *ngFor="let m of movies.results"
-          ngxSlickItem
-          (click)="playMovie(m)"
-        >
-          <img
-            src="{{ m?.poster_path }}"
-            alt="{{ m.title }}"
-            width="200"
-            height="300"
-          />
-        </div>
-      </ngx-slick-carousel>
+  <div class="movie" *ngIf="movies.type == 'trending'">
+    <div class="movie__images">
+      <div class="thumbnails">
+        <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+          <div
+            class="slick-item"
+            *ngFor="let m of movies.results"
+            ngxSlickItem
+            (click)="playMovie(m)"
+          >
+            <img
+              src="{{ m?.poster_path }}"
+              alt="{{ m.title }}"
+              width="200"
+              height="300"
+            />
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+
+  <div class="movie" *ngIf="movies.type != 'trending'">
+    <div class="movie__images">
+      <div class="thumbnails">
+        <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+          <div
+            class="slick-item"
+            *ngFor="let m of movies.results"
+            ngxSlickItem
+            (click)="playMovie(m)"
+          >
+            <img
+              src="https://image.tmdb.org/t/p/w200{{ m?.poster_path }}"
+              alt="{{ m.title }}"
+            />
+          </div>
+        </ngx-slick-carousel>
+      </div>
     </div>
   </div>
 </div>
+<div class="mobileView">
+  <div style="margin: 10px; margin-top: 20px" *ngIf="movies.type == 'trending'">
+    <h2>{{ title }}</h2>
+    <ngx-slick-carousel [config]="mobileSliderConfig" class="carousel">
+      <div
+        class="slick-item"
+        *ngFor="let m of movies.results"
+        ngxSlickItem
+        (click)="playMovie(m)"
+      >
+        <img
+          src="{{ m?.poster_path }}"
+          alt="{{ m.title }}"
+          class="movie-tile-image"
+        />
+      </div>
+    </ngx-slick-carousel>
+  </div>
 
-<div class="movie" *ngIf="movies.type != 'trending'">
-  <div class="movie__images">
-    <div class="thumbnails">
-      <ngx-slick-carousel [config]="sliderConfig" class="carousel">
-        <div
-          class="slick-item"
-          *ngFor="let m of movies.results"
-          ngxSlickItem
-          (click)="playMovie(m)"
-        >
-          <img
-            src="https://image.tmdb.org/t/p/w200{{ m?.poster_path }}"
-            alt="{{ m.title }}"
-          />
-        </div>
-      </ngx-slick-carousel>
+  <div
+    class="movie"
+    *ngIf="movies.type != 'trending'"
+    style="margin: 10px; margin-top: 20px"
+  >
+    <h2>{{ title }}</h2>
+    <div class="movie__images">
+      <div class="thumbnails">
+        <ngx-slick-carousel [config]="mobileSliderConfig" class="carousel">
+          <div
+            class="slick-item"
+            *ngFor="let m of movies.results"
+            ngxSlickItem
+            (click)="playMovie(m)"
+          >
+            <img
+              src="https://image.tmdb.org/t/p/w200{{ m?.poster_path }}"
+              alt="{{ m.title }}"
+              class="movie-tile-image"
+            />
+          </div>
+        </ngx-slick-carousel>
+      </div>
     </div>
   </div>
 </div>
